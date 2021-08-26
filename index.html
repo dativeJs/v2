@@ -23,12 +23,213 @@
 <meta property="twitter:title" content="DativeJs — A micro UI JavaScript framework">
 <meta property="twitter:description" content="DativeJs is a Javascript framework for building website and webapps just like the big guy VueJs">
 <meta property="twitter:image" content="https://dativejs.js.org/public/logo.png">
-    <link rel="stylesheet" href="src/docute.css">
+<link rel="stylesheet" href="css/vs.css">
+  <link rel="stylesheet" href="css/tailwind.css">
 </head>
-
+<style>
+  .monospace{
+    font-family: monospace;
+  }
+  .show{
+    transition: 2s;
+    display: block;
+  }
+  .hide{
+    display: none;
+  }
+  pre{
+    border-radius: 5px;
+  }
+  .log{
+    color: #ff3e00;
+  }
+  .text-dative{
+    color: #ff3e00;
+  }
+</style>
 <body>
-  <div id="app"></div>
+  <div id="app" class="relative">
+     <nav class="bg-white fixed shadow-lg w-full py-3" style="z-index: 1000">
+       <div class="max-w-6xl mx-auto px-4">
+         <div class="flex justify-between">
+           <div class="flex space-x-7">
+             <div>
+               <p class="flex items-center py-4 px-2 md:mx-5">
+                 <img src="public/logo.svg" alt="Logo" class="absolute top--5 left-0 h-20 w-20">
+                 <span class="absolute left-16 font-bold text-gray-500 text-lg monospace">Dative</span>
+               </p>
+               <ul class="absolute hidden md:block right-10 top-5 md:flex md:space-x-4 mx-5 text-gray-500 z-auto">
+                 <li><a href="#">Home</a></li><br />
+                 <li><a href="https://github.com/dativeJs/dativejs">GitHub</a></li><br />
+                 <li><a href="/docs.html">Docs</a></li><br />
+               </ul>
+               <span class="absolute top-3 right-10 text-4xl md:hidden" onclick="navopen()">&#9776;</span>
+             </div>
+           </div>     
+         </div>
+    </div>
+    </nav><br /><br /><br />
+    <div class="shadow-2xl bg-white border-black fixed w-2/4 right-0 top-12 md:hidden" id="nav" style="z-index: 1000;height: 0px;overflow: hidden">
+      <ul class="mx-5 text-gray-500 z-auto">
+        <li><a href="#">Home</a></li><br />
+        <li><a href="https://github.com/dativeJs/dativejs">GitHub</a></li><br />
+        <li><a href="/docs.html">Docs</a></li><br />
+      </ul>
+    </div>
+    <div class="container mx-auto px-4 py-5 md:grid">
+      <h1 class="text-7xl font-bold text-center text-gray-600 monospace md:z-10 md:border-white">Dative</h1><br />
+      <img class="text-center relative left-36" src="https://img.shies" alt="" />
+      <img src="public/logo-alt.svg" class="md:block lg:block hidden absolute z-0 -top-48 -left-60" alt="" />
+      <p class="text-center text-2xl md:z-10">A Micro UI JavaScript framework</p>
+      <div class="features mx-auto py-5 relative top-10">
+        <div class="shadow-xl bg-red-500 rounded py-5 text-white mx-5">
+          <h1 class="mx-5 text-4xl font-bold text-white">Reactive</h1><br />
+          <p class="mx-5">Dativejs brings JavaScript to itself</p><br />
+        </div><br />
+        <div class="shadow-xl bg-blue-500 rounded py-5 text-white mx-5">
+          <h1 class="mx-5 text-4xl font-bold text-white">No Virtual Dom</h1><br />
+          <p class="mx-5">Dativejs renders the code your write directly to the Browser</p><br />
+        </div><br />
+        <div class="shadow-xl bg-yellow-800 rounded py-5 text-white mx-5">
+          <h1 class="mx-5 text-4xl font-bold text-white">Simple and minimalistic</h1><br />
+          <p class="mx-5">Easy to learn no much load of knowledge to be carried</p><br />
+        </div><br />
+      </div><br /><br />
+      <div class="mx-5">
+        <div class="text-gray-700 text-xl"><p class="">DativeJs is a new approach to building user interfaces.It does all its work on the Browser. It has no Virtual Dom.All the code is been rendered directly to the browser</p></div>
+      </div><br />
+    </div>
+      <div class="mx-0 bg-gray-700 text-white py-5">
+        <div class="mx-5">
+          <h1 class="text-xl">Cdn</h1><br />
+          <pre class="html"><code>&lt;script src="https://cdn.jsdelivr.net/npm/dativejs@2.0.0/dist/dative.js">&lt;/script>
+&lt;!--Production-->
+&lt;script src="https://cdn.jsdelivr.net/npm/dativejs@2.0.0/dist/dative.min.js">&lt;/script>
+          </code></pre><br />
+        <h4 class="text-xl">Dative has some inbuilt directives to help your project more fast</h4><br />
+<pre class="javascript"><code>var app = new Dative({
+  el: "#root",
+  data:()=>({
+    html: "&lt;p>Hello DativeJs&lt;/p>"
+  }),
+  template: function(){
+    return `
+      &lt;h1 dv-html='html'>&lt;/h1>
+    `
+  }
+}); 
+app.render()</code></pre><br />  
+<h4 class="text-xl">Output</h4><br />
+<pre class="html"><code>&lt;h1>&lt;p>Hello DativeJs&lt;/p>&lt;/h1></code></pre><br />
+<h4 class="text-lg">List of all the inbuilt directives</h4>
+<pre class="html"><code>dv-text &lt;!-- it's used to insert text content from the data into the textContent of an element in the template -->
+dv-html &lt;!-- this directive is used to insert html content from the data into the innerHTML of an element in the template -->
+dv-on &lt;!-- it's used to handle event -->
+dv-on:&lt;event> &lt;!-- it's also used to handle event -->
+dv-bind:&lt;attribute> &lt;!-- it's used to bind attributes from the data to the element 
+example dv-bind:src="img"-->
+&lt;!-- :&lt;attribute> short form for dv-bind:&lt;attribute> -->
+:&lt;attribute> &lt;!-- it's also used to bind attributes from the data to the element but it's the short form for the dv-bind:&lt;attribute>
+example :src="img"-->
+dv-if &lt;!-- it conditionally render the template based on the truthy-ness of the given expression value -->
+dv-show &lt;!-- this directive toggle’s the element's display CSS property based on the truthy-ness of the given expression value. -->
+dv-ref &lt;!-- this directive is used to reference an element -->
+:style &lt;!-- it's used to pass an object or an array  to dynamically update styles. You can use either camelCase or kebab-case (use quotes with kebab-case) for the CSS property names. -->
+:class &lt;!-- it's used to pass an object or an array to dynamically update classes -->
+</code></pre><br />
+        <h4 class="text-xl">Build Ui With DativeJs</h4><br />
+<pre class="javascript"><code>import Dative from 'dativejs';
+
+
+var app = new Dative({
+  el: '#root',
+  template: `
+    &lt;h1>Hello world&lt;/h1>
+    &lt;p>Welcome {{ user }} &lt;/p>
+ `,
+  data(){
+    return {
+      user: "Tobithedev"
+    }
+  }
+})
+app.render()</code></pre><br />
+        </div>
+      </div>
+      <!--<div class="mx-12 text-black py-5">
+        <h2 class="text-2xl font-bold">Who's using DativeJs</h2><br />
+         <div class="space-x-4 relative">
+           <div class="border-4 rounded shadow-xl">
+          <a href="https://konnectfree.com.ng">
+           <img class="mx-5 relative z-30 inline object-cover w-12 h-12" src="public/konnectfree.png" />
+           <h3 class="text-gray-800 mx-5 font-bold absolute top-5 left-20">konnectfree</h3>
+          </a>
+           </div>
+         </div>
+      </div>-->
+    <div class="mx-12 text-black py-5">
+      <h2 class="text-2xl font-bold">Contributors</h2><br />
+      <p class="text-gray-600 text-xl">Dative is free and open source software, made possible by the work of volunteers. <a href="https://github.com/dativeJs/dativejs" class="log underline">Join Us</a></p><br />
+      <div class="space-x-4">
+        <img class="relative z-30 inline object-cover w-12 h-12 border-4 border-yellow-600 rounded-full shadow-xl animate-bounce" src="https://avatars.githubusercontent.com/u/61181645?v=4" />
+        <div class="relative z-30 inline w-12 h-12 border-4 py-5 px-5 border-black rounded-full shadow-xl animate-bounce">Your Photo</div>
+      </div>
+    </div>
+<div class="mx-5">
+  <h2 class="text-2xl mx-5 font-bold">Tiny Size</h2>
+    <div class="bg-white rounded-lg w-75 block p-2">
+      <span class="mx-5">@angular/core gzip(89.4KB)</span>
+        <div class="w-full h-2 bg-gray-200 rounded-full mt-3">
+            <div class="h-full text-white bg-pink-600 rounded-full" style="width: 89%">
+            </div>
+        </div><br />
+        <span class="mx-5">react gzip(42.2KB)</span>
+        <div class="w-full h-2 bg-gray-200 rounded-full mt-3">
+          <div class="h-full text-white bg-pink-600 rounded-full" style="width: 42%">
+          </div>
+        </div><br />
+        <span class="mx-5">vue gzip(24.44KB)</span>
+        <div class="w-full h-2 bg-gray-200 rounded-full mt-3">
+          <div class="h-full text-white bg-pink-600 rounded-full" style="width: 24.44%">
+          </div>
+        </div><br />
+        <span class="mx-5">dative gzip(10.6KB)</span>
+        <div class="w-full h-2 bg-gray-200 rounded-full mt-3">
+          <div class="h-full text-white bg-green-600 rounded-full" style="width: 10.6%">
+          </div>
+        </div><br />
+        <span class="mx-5">preact gzip(4KB)</span>
+        <div class="w-full h-2 bg-gray-200 rounded-full mt-3">
+          <div class="h-full text-white bg-blue-600 rounded-full" style="width: 4%">
+          </div>
+        </div><br />
+    </div>
+    <hr />
+</div>
+  <div class="mx-0 bg-white text-dative py-5 relative">
+    <div class="mx-5">  
+      <h1 class="text-3xl font-bold"><img src="public/logo.svg" class="absolute w-20" style="top: -10px;left: 0;" alt="logo" /><b class="mx-10">Dative</b></h1><br />
+      <ul class="mx-5">
+        <li><a href="/migration.html">Migrating from v1 to v2</a></li><br />
+        <li><a href="/docs.html">Documentation</a></li>
+      </ul><br />
+      <hr /><br />
+      <div class="mx-5">
+        <a href="https://github.com/dativeJs/dativejs"><img src="assets/img/github.svg" alt="GitHub" /></a><br />
+        <a href="https://madewithdativejs.js.org"><img src="assets/img/showcase.svg" alt="showcase"></a><br />
+         <a href="https://opencollective.com/dativeJs"><img src="assets/img/donate.svg" alt="Donate"></a>
+      </div><br />
+      <hr />
+      <br />
+      <h3 class="text-gray-500 mx-5">Copyright © 2021-<date></date> Tobithedev - Dativejs</h3>
+    </div>
+  </div>
+  </div>
 </body>
-  <script src="src/docute.js"></script>
+  <script src="src/highlight.min.js"></script>
   <script src="main.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  $('date').innerHTML = new Date().getFullYear()
+  </script>
 </html>

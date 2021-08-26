@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="public/logo.svg" type="image/x-icon" />
+    <!-- Primary Meta Tags -->
+<title>Docs • DativeJs</title>
+<meta name="title" content="Docs • DativeJs">
+<meta name="description" content="DativeJs documentation">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dativejs.js.org/">
+<meta property="og:title" content="Docs • DativeJs">
+<meta property="og:description" content="DativeJs documentation">
+<meta property="og:image" content="https://dativejs.js.org/public/logo.png">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://dativejs.js.org/">
+<meta property="twitter:title" content="Docs • DativeJs">
+<meta property="twitter:description" content="DativeJs documentation">
+<meta property="twitter:image" content="https://dativejs.js.org/public/logo.png">
+<link rel="stylesheet" href="css/vs2015.css">
+  <link rel="stylesheet" href="css/tailwind.css">
+</head>
+<style>
+  .monospace{
+    font-family: monospace;
+  }
+  .show{
+    transition: 2s;
+    display: block;
+  }
+  .hide{
+    display: none;
+  }
+  pre{
+    border-radius: 5px;
+  }
+  .log{
+    color: #ff3e00;
+  }
+</style>
+<body>
+  <div id="app" class="relative">
+     <nav class="bg-white fixed shadow-lg w-full py-3" style="z-index: 1000">
+       <div class="max-w-6xl mx-auto px-4">
+         <div class="flex justify-between">
+           <div class="flex space-x-7">
+             <div>
+               <span class="absolute top-3 left-5 text-4xl md:hidden" onclick="sideopen()">&#9776;</span>
+               <p class="flex items-center py-4 px-2 md:mx-5">
+                 <img src="../public/logo.svg" alt="Logo" class="absolute top--5 left-10 h-20 w-20">
+                 <span class="absolute left-28 font-bold text-gray-500 text-lg monospace">Dative</span>
+               </p>
+               <ul class="absolute hidden md:block right-10 top-5 md:flex md:space-x-4 mx-5 text-gray-500 z-auto">
+                 <li><a href="/">Home</a></li><br />
+                 <li><a href="https://github.com/dativeJs/dativejs">GitHub</a></li><br />
+                 <li><a href="/docs.html">Docs</a></li><br />
+               </ul>
+               <span class="absolute top-3 right-10 text-4xl md:hidden" onclick="navopen()">&#9776;</span>
+             </div>
+           </div>     
+         </div>
+    </div>
+    </nav><br /><br /><br />
+    <div class="shadow-2xl bg-white border-black fixed w-2/4 right-0 top-12 md:hidden" id="nav" style="z-index: 1000;height: 0px;overflow: hidden">
+      <ul class="mx-5 text-gray-500 z-auto">
+        <li><a href="/">Home</a></li><br />
+        <li><a href="https://github.com/dativeJs/dativejs">GitHub</a></li><br />
+        <li><a href="/docs.html">Docs</a></li><br />
+      </ul>
+    </div>
+    <div class="py-10 bg-gray-500 text-white fixed w-0 top-12 h-screen overflow-hidden ease-in-out md:w-60 " id="sidebar" style="transition: width 1s;">
+      <ul class="mx-5">
+        <li>
+          <p>Essential</p>
+          <ul class="mx-5">
+            <li><a href="#instance">Instance</a></li>
+            <li><a href="#reactive">Reactivity</a></li>
+            <li><a href="#directives">Directives</a></li>
+            <li><a href="#create-your-own-custom-directive">Custom Directives</a></li>
+            <li><a href="#computed">Computed property</a></li>
+            <li><a href="#state-management">State Management</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="mx-5 md:mx-72 text-gray-600">
+      <h1 class="text-2xl" id="instance">INSTANCE</h1><br />
+      <p>Building a Ui with Dative is pretty easy to setup</p><br />
+<pre class="html"><code>&lt;body>
+  &lt;div id="app">&lt;/div>
+&lt;/body></code></pre><br />
+<pre class="js"><code>import Dative from "dativejs";
+Dative.config.slient = false; // it enables warnings
+
+var app = new Dative({
+  el: "#app", // target for the instance
+  // OR 
+  target: "#app",
+  template: "", // template for the instance
+  // OR
+  template: function(){},
+  data: {}, // reactive object
+  // OR
+  data: function(){ return {} },
+  methods: {}, // event listeners
+  store: store, // attaching the dytejs store
+  computed: {}, // combining/merging two or more datas
+  mounted: function(){}, // function invoked when the dom has mounted
+  created: function(){}, // function invoked when the instance is created
+  update: function({ data }){}, // function invoked when theirs any changes
+  directives: {} // creating custom directives
+})
+app.render()</code></pre><br />
+<hr>
+<br>
+  <h1 class="text-2xl" id="reactive">REACTIVITY</h1><br />
+  <pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+Dative.config.slient = false; // it enables warnings
+
+var app = new Dative({
+  el: "#app",
+  data: ()=>({
+    count: 0
+  }),
+  template: function(){
+    return `
+      &lt;h1>{{ count }}&lt;/h1>
+      &lt;button dv-on:click="increase">Increase&lt;/button>
+    `
+  },
+  methods:{
+    increase(){
+      this.data.count++
+    }
+ }
+})
+app.render()</code></pre><br />
+<hr>
+<br>
+<h1 class="text-2xl" id="directives">ELEMENT DIRECTIVES</h1><br />
+<p>As well as attributes, elements can have directives, which control the element's behaviour in some way.</p>
+<br />
+<h3 class="font-bold text-3xl">dv-on:eventname</h3><br />
+<pre><code>dv-on:eventname="handler"</code></pre><br />
+<p>Use the dv-on: directive to listen to DOM events.</p><br />
+<p>The @eventname and dv-on="eventname: function" are the same with the dv-on:eventname</p>
+<h3 class="font-bold text-3xl">dv-ref</h3><br />
+<pre class="js"><code>template: function(){
+  return `
+    &lt;input type="text" dv-ref="input">
+  `
+}</code></pre><br />
+<p>Use the dv-ref directive to reference an element</p><br />
+<h3 class="font-bold text-3xl">dv-html</h3><br />
+<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+Dative.config.slient = false; // it enables warnings
+
+var app = new Dative({
+  el: "#app",
+  data: ()=>({
+    html_content: "&lt;h2>Hello World &lt;/div>"
+  }),
+  template: function(){
+    return `
+      &lt;div dv-html="html_content">&lt;/div>
+    `
+  }
+})
+app.render()</code></pre><br />
+<p>Use the dv-html directive to insert content from the data to innerHTML of an element</p><br />
+<h3 class="font-bold text-3xl">dv-text</h3><br />
+<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+Dative.config.slient = false; // it enables warnings
+
+var app = new Dative({
+  el: "#app",
+  data: ()=>({
+    text_content: "Hello World"
+  }),
+  template: function(){
+    return `
+      &lt;div dv-text="text_content">&lt;/div>
+    `
+  }
+})
+app.render()</code></pre><br />
+<p>Use the dv-text directive to insert content from the data to textContent of an element</p><br />
+<h3 class="font-bold text-3xl">dv-show</h3><br />
+<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+Dative.config.slient = false; // it enables warnings
+
+var app = new Dative({
+  el: "#app",
+  data: ()=>({
+    show: false
+  }),
+  template: function(){
+    return `
+      &lt;div dv-show="show">
+        &lt;h1>I'll not display&lt;/h1>
+      &lt;/div>
+    `
+  }
+})
+app.render()</code></pre><br />
+<p>Use the dv-show directive to toggle the element's display CSS property based on the truthy-ness of the given expression value</p><br />
+<h3 class="font-bold text-3xl">dv-if</h3><br />
+<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+Dative.config.slient = false; // it enables warnings
+
+var app = new Dative({
+  el: "#app",
+  data: ()=>({
+    show: false
+  }),
+  template: function(){
+    return `
+      &lt;div dv-if="show">
+        &lt;h1>I'll be hidden&lt;/h1>
+      &lt;/div>
+    `
+  }
+})
+app.render()</code></pre><br />
+<p>Use the dv-if directive to conditionally render the template based on the truthy-ness of the given expression value</p><br />
+<h3 class="font-bold text-3xl">:style</h3><br />
+<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+Dative.config.slient = false; // it enables warnings
+
+var app = new Dative({
+  el: "#app",
+  data: ()=>({
+    styles:{
+      background: "red",
+      fontSize: 30,
+      'text-align': 'center'
+    }
+  }),
+  template: function(){
+    return `
+      &lt;div :style="styles">
+        &lt;h1>I'll have a red background&lt;/h1>
+      &lt;/div>
+    `
+  }
+})
+app.render()</code></pre><br />
+<p>Use the :style directive to pass an object or an array  to dynamically update styles. You can use either camelCase or kebab-case (use quotes with kebab-case) for the CSS property names</p><br />
+<h3 class="font-bold text-3xl">:class</h3><br />
+<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+Dative.config.slient = false; // it enables warnings
+
+var app = new Dative({
+  el: "#app",
+  data: ()=>({
+    active_class:{
+      active: true
+    }
+  }),
+  template: function(){
+    return `
+      &lt;div :class="active_class">
+        &lt;h1>my parent tag will have a class name of active&lt;/h1>
+      &lt;/div>
+    `
+  }
+})
+app.render()</code></pre><br />
+<p>Use the :class directive to pass an object or an array to dynamically update classes</p><br />
+<h3 class="font-bold text-3xl">:&lt;attribute></h3><br />
+<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+Dative.config.slient = false; // it enables warnings
+
+var app = new Dative({
+  el: "#app",
+  data: ()=>({
+    href: '/'
+  }),
+  template: function(){
+    return `
+      &lt;div>
+        &lt;a :href="href">Home&lt;/a>
+      &lt;/div>
+    `
+  }
+})
+app.render()</code></pre><br />
+<p>Use the :&lt;attribute> directive to dynamically render contents from data to the element</p><br />
+<h3 class="font-bold text-3xl">bind:&lt;attribute></h3><br />
+<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+Dative.config.slient = false; // it enables warnings
+
+var app = new Dative({
+  el: "#app",
+  data: ()=>({
+    href: '/'
+  }),
+  template: function(){
+    return `
+      &lt;div>
+        &lt;a bind:href="href">Home&lt;/a>
+      &lt;/div>
+    `
+  }
+})
+app.render()</code></pre><br />
+<p>The bind:&lt;attribute> directive does exactly the same thing the :&lt;attribute> does.Its the long form for the :&lt;attribute></p><br />
+<hr />
+<br />
+<h2 class="text-2xl font-bold" id="create-your-own-custom-directive">Create Your own Custom Directives</h2><br />
+<h4 class="text-xl">Without Binds</h4><br />
+<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+Dative.config.slient = false; // it enables warnings
+
+var app = new Dative({
+  el: "#app",
+  template: function(){
+    return `
+      &lt;div>
+        &lt;h2 dv-rainbow>Hello DativeJs&lt;/h2>
+      &lt;/div>
+    `
+  },
+  directives:{
+    rainbow: function(el,{ bind,name }){
+      // el is the target element
+      el.style.color = `#${Math.random().toString().slice(2,8)}`
+    }
+  }
+})
+app.render()</code></pre><br />
+<h4 class="text-xl">With Binds</h4><br />
+<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+Dative.config.slient = false; // it enables warnings
+
+var app = new Dative({
+  el: "#app",
+  template: function(){
+    return `
+      &lt;div>
+        &lt;h2 dv-color="green">Hello DativeJs&lt;/h2>
+      &lt;/div>
+    `
+  },
+  directives:{
+    color: function(el,{ bind,name }){
+      // el is the target element
+      // bind.value is the directives value
+      el.style.color = bind.value
+    }
+  }
+})
+app.render()</code></pre><br />
+<h4 class="text-xl">With Binds argument</h4><br />
+<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+Dative.config.slient = false; // it enables warnings
+
+var app = new Dative({
+  el: "#app",
+  template: function(){
+    return `
+      &lt;div>
+        &lt;h2 dv-color:background="green">Hello DativeJs&lt;/h2>
+      &lt;/div>
+    `
+  },
+  directives:{
+    color: function(el,{ bind,name }){
+      // el is the target element
+      // bind.value is the directives value
+      // bind.args is the text that's after the :
+      if(bind.args === "background"){
+        el.style.background = bind.value
+      }else{
+        el.style.color = bind.value
+      } 
+    }
+  }
+})
+app.render()</code></pre><br />
+<hr>
+<br>
+  <h2 class="text-2xl font-bold" id="computed">COMPUTED</h2><br />
+  <p>Computed properties allow us to define a property that is used the same way as data, but can also have some custom logic that is cached based on its dependencies</p><br />
+<pre class="js"><code>computed:{
+  fullname: function(){
+   return this.firstname + ' ' + this.lastname
+  }
+}</code></pre><br>
+<hr>
+<br>
+ <h2 class="text-2xl font-bold" id="state-management">STATE MANAGEMENT</h2><br />
+ <p>It is often overlooked that the source of truth in Dative applications is the raw data object - a Dative instance only proxies access to it. Therefore, if you have a piece of state that should be shared by multiple instances, you can share it by identity:</p><br />
+<pre class="js"><code>import Dative,{ reactive } from "dativejs"; // gzip (10.6KB)
+Dative.config.slient = false; // it enables warnings
+
+var SourceofTruth = reactive({
+   name: "dative"
+ })
+ 
+ var vm = new Dative({
+   data: SourceofTruth
+ })
+
+ var app = new Dative({
+   data: SourceofTruth
+ })
+ 
+ // it should update the two applications
+ 
+ SourceofTruth.name = "Tobithedev";</code></pre><br />
+</div>
+</body>
+<script src="src/highlight.min.js"></script>
+<script src="main.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+  function sideopen(){
+    if($('#sidebar').style.width == '0px'){
+      $('#sidebar').style.width = '15rem'
+    }else{
+      $('#sidebar').style.width = '0px'
+    }
+  }
+  
+</script>
+</html>

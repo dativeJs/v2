@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="public/logo.svg" type="image/x-icon" />
+    <meta http-equiv="X-UA-Compatible" content="IE=7,8,edge" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <!-- Primary Meta Tags -->
+<title>Migrating from v1 to v2 • DativeJs</title>
+<meta name="title" content="Migrating from v1 to v2 • DativeJs">
+<meta name="description" content="Migrating from v1 to v2.... You can now create custom directives with DativeJs">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dativejs.js.org/">
+<meta property="og:title" content="Migrating from v1 to v2 • DativeJs">
+<meta property="og:description" content="Migrating from v1 to v2.... You can now create custom directives with DativeJs">
+<meta property="og:image" content="https://dativejs.js.org/public/logo.png">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://dativejs.js.org/">
+<meta property="twitter:title" content="Migrating from v1 to v2 • DativeJs">
+<meta property="twitter:description" content="Migrating from v1 to v2.... You can now create custom directives with DativeJs">
+<meta property="twitter:image" content="https://dativejs.js.org/public/logo.png">
+<link rel="stylesheet" href="css/vs2015.css">
+  <link rel="stylesheet" href="css/tailwind.css">
+</head>
+<style>
+  .monospace{
+    font-family: monospace;
+  }
+  .show{
+    transition: 2s;
+    display: block;
+  }
+  .hide{
+    display: none;
+  }
+  pre{
+    border-radius: 5px;
+  }
+  .log{
+    color: #ff3e00;
+  }
+  .text-dative{
+    color: #ff3e00;
+  }
+</style>
+<body>
+  <div id="app" class="relative">
+     <nav class="bg-white fixed shadow-lg w-full py-3" style="z-index: 1000">
+       <div class="max-w-6xl mx-auto px-4">
+         <div class="flex justify-between">
+           <div class="flex space-x-7">
+             <div>
+               <p class="flex items-center py-4 px-2 md:mx-5">
+                 <img src="public/logo.svg" alt="Logo" class="absolute top--5 left-0 h-20 w-20">
+                 <span class="absolute left-16 font-bold text-gray-500 text-lg monospace">Dative</span>
+               </p>
+               <ul class="absolute hidden md:block right-10 top-5 md:flex md:space-x-4 mx-5 text-gray-500 z-auto">
+                 <li><a href="/index.html">Home</a></li><br />
+                 <li><a href="https://github.com/dativeJs/dativejs">GitHub</a></li><br />
+                 <li><a href="/docs.html">Docs</a></li><br />
+               </ul>
+               <span class="absolute top-3 right-10 text-4xl md:hidden" onclick="navopen()">&#9776;</span>
+             </div>
+           </div>     
+         </div>
+    </div>
+    </nav><br /><br /><br />
+    <div class="shadow-2xl bg-white border-black fixed w-2/4 right-0 top-12 md:hidden" id="nav" style="z-index: 1000;height: 0px;overflow: hidden">
+      <ul class="mx-5 text-gray-500 z-auto">
+        <li><a href="/index.html">Home</a></li><br />
+        <li><a href="https://github.com/dativeJs/dativejs">GitHub</a></li><br />
+        <li><a href="/docs.html">Docs</a></li><br />
+      </ul>
+    </div>
+    <div class="mx-5">
+      <h1 class="text-2xl font-bold text-gray-500 underline">Migrating from v1 to v2</h1><br />
+      <h1 class="text-2xl font-bold">Built-In Directives</h1><br /><hr><br>
+      <p class="text-xl">bind <code class="px-2 text-red-400 bg-gray-200 rounded">changed</code></p><br>
+      <p class="text-xl">You can now use</p><br />
+      <pre class="html"><code>&lt;h1 dv-bind:title="content">&lt;/h1></code></pre><br />
+      <p class="text-xl">:html <code class="px-2 text-red-400 bg-gray-200 rounded">changed</code></p><br>
+      <p class="text-xl">You can now use</p><br />
+      <pre class="html"><code>&lt;h1 dv-html="content">&lt;/h1></code></pre><br />
+      <p class="text-xl">:text <code class="px-2 text-red-400 bg-gray-200 rounded">changed</code></p><br>
+      <p class="text-xl">You can now use</p><br />
+      <pre class="html"><code>&lt;h1 dv-text="content">&lt;/h1></code></pre><br />
+      <p class="text-xl">ref <code class="px-2 text-red-400 bg-gray-200 rounded">changed</code></p><br>
+      <p class="text-xl">You can now use</p><br />
+      <pre class="html"><code>&lt;h1 dv-ref="h1">&lt;/h1></code></pre><br />
+      <p class="text-xl">on:eventname <code class="px-2 text-red-400 bg-gray-200 rounded">changed</code></p><br>
+      <p class="text-xl">You can now use</p><br />
+      <pre class="html"><code>&lt;button dv-on:click="increase">Increase&lt;/button></code></pre><br />
+      <p class="text-xl">if <code class="px-2 text-red-400 bg-gray-200 rounded">changed</code></p><br>
+      <p class="text-xl">You can now use</p><br />
+      <pre class="html"><code>&lt;h2 dv-if="condition">Hi&lt;/h2></code></pre><br />
+      <p class="text-xl">:show <code class="px-2 text-red-400 bg-gray-200 rounded">changed</code></p><br>
+      <p class="text-xl">You can now use</p><br />
+      <pre class="html"><code>&lt;h1 dv-show="show">Hello&lt;/h1></code></pre><br />
+      <h1 class="text-2xl font-bold">Built-In Functions</h1><br /><hr><br>
+      <p class="text-xl text-gray-800">Dative.warn() <code class="px-2 text-red-700 bg-gray-200 rounded">removed</code></p><br>
+      <p class="text-xl text-gray-800">Dative.emit() <code class="px-2 text-red-700 bg-gray-200 rounded">removed</code></p><br>
+      <p class="text-xl">Dative.debug() <code class="px-2 text-red-400 bg-gray-200 rounded">changed</code></p><br>
+       <p class="text-xl">You can now use</p><br />
+      <pre class="javascript"><code>Dative.config.slient
+ // if you want to enable warning errors
+Dative.config.slient = false;
+ 
+ // Default is true
+Dative.config.slient = true;</code></pre><br />
+ <h1 class="text-2xl font-bold">Template</h1><br /><hr><br>
+  <p class="text-xl text-gray-800">{{ "text" }} <code class="px-2 text-red-700 bg-gray-200 rounded">removed</code></p><br>
+    </div>
+</body>
+<script src="src/highlight.min.js"></script>
+<script src="main.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</html>
