@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Javascript,vuejs, dativejs,dativejs docs,dativejs documentation, state management, framework,frontend, frontend framework, JavaScript framework,javascript library">
     <link rel="shortcut icon" href="public/logo.svg" type="image/x-icon" />
     <!-- Primary Meta Tags -->
 <title>Docs • DativeJs</title>
@@ -99,7 +100,7 @@
 Dative.config.slient = false; // it enables warnings
 
 var app = new Dative({
-  el: "#app", // target for the instance
+  el: "#app", // target for the instance, Can be either an id or a class or a node
   // OR 
   target: "#app",
   template: "", // template for the instance
@@ -292,7 +293,7 @@ var app = new Dative({
 })
 app.render()</code></pre><br />
 <p>Use the :&lt;attribute> directive to dynamically render contents from data to the element</p><br />
-<h3 class="font-bold text-3xl">bind:&lt;attribute></h3><br />
+<h3 class="font-bold text-3xl">dv-bind:&lt;attribute></h3><br />
 <pre class="js"><code>import Dative from "dativejs"; // gzip (2.99KB)
 Dative.config.slient = false; // it enables warnings
 
@@ -304,13 +305,13 @@ var app = new Dative({
   template: function(){
     return `
       &lt;div>
-        &lt;a bind:href="href">Home&lt;/a>
+        &lt;a dv-bind:href="href">Home&lt;/a>
       &lt;/div>
     `
   }
 })
 app.render()</code></pre><br />
-<p>The bind:&lt;attribute> directive does exactly the same thing the :&lt;attribute> does.Its the long form for the :&lt;attribute></p><br />
+<p>The dv-bind:&lt;attribute> directive does exactly the same thing the :&lt;attribute> does.Its the long form for the :&lt;attribute></p><br />
 <hr />
 <br />
 <h2 class="text-2xl font-bold" id="create-your-own-custom-directive">Create Your own Custom Directives</h2><br />

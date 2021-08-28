@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Javascript,vuejs, dativejs, state management, framework,frontend, frontend framework, JavaScript framework,javascript library">
     <link rel="shortcut icon" href="public/logo.svg" type="image/x-icon" />
     <!-- Primary Meta Tags -->
 <title>DativeJs — A micro UI JavaScript framework</title>
@@ -102,9 +103,52 @@
       <div class="mx-0 bg-gray-700 text-white py-5">
         <div class="mx-5">
           <h1 class="text-xl">Cdn</h1><br />
+          <h3 class="text-xl">Use <a href="https://jsdelivr.com/package/npm/dativejs" class="text-blue-500">Jsdelivr</a></h3><br />
           <pre class="html"><code>&lt;script src="https://cdn.jsdelivr.net/npm/dativejs@2.0.0/dist/dative.js">&lt;/script>
 &lt;!--Production-->
 &lt;script src="https://cdn.jsdelivr.net/npm/dativejs@2.0.0/dist/dative.min.js">&lt;/script></code></pre><br />
+ <h3 class="text-xl">Use <a href="https://unpkg.com/browser/dativejs@2.0.0" class="text-blue-500">Unpkg</a></h3><br />
+ <pre class="html"><code>&lt;script src="https://unpkg.com/dativejs@2.0.0/dist/dative.js">&lt;/script>
+&lt;!--Production-->
+&lt;script src="https://unpkg.com/dativejs@2.0.0/dist/dative.min.js">&lt;/script></code></pre><br />
+ <h3 class="text-xl">Esmodule</h3><br />
+<pre class="js"><code>import Dative from 'https://unpkg.com/dativejs@2.0.0/dist/dative.es.min.js';
+var app = new Dative({
+  el: "#app",
+  template(){
+    return `
+      &lt;h1>Hello world&lt;/h1>
+    `
+  }
+})
+app.render();</code></pre><br />
+ <h3 class="text-xl">Npm</h3><br />
+<pre class="bash"><code>npm install dativejs</code></pre><br />
+<p class="text-lg">Also run</p><br />
+<pre class="bash"><code>npm install
+# to install all dependencies</code></pre><br />
+<p class="text-lg">Esmodule</p><br />
+<pre class="js"><code>import Dative from 'dativejs';
+var app = new Dative({
+  el: "#app",
+  template(){
+    return `
+      &lt;h1>Hello world&lt;/h1>
+    `
+  }
+})
+app.render();</code></pre><br />
+<p class="text-lg">CommonJs</p><br />
+<pre class="js"><code>var Dative = require('dativejs');
+var app = new Dative({
+  el: "#app",
+  template(){
+    return `
+      &lt;h1>Hello world&lt;/h1>
+    `
+  }
+})
+app.render();</code></pre><br />
         <h4 class="text-xl">Dative has some inbuilt directives to help your project more fast</h4><br />
 <pre class="javascript"><code>var app = new Dative({
   el: "#root",
@@ -218,7 +262,8 @@ app.render()</code></pre><br />
         <a href="https://madewithdativejs.js.org"><img src="assets/img/showcase.svg" alt="showcase"></a><br />
          <a href="https://opencollective.com/dativeJs"><img src="assets/img/donate.svg" alt="Donate"></a><br />
          <a href="https://npmjs.com/package/dativejs"><img alt="npm downloads" src="https://img.shields.io/npm/dw/dativejs?style=plastic"></a><br />
-         <a href="https://npmjs.com/package/dativejs"><img src="https://img.shields.io/bundlephobia/minzip/dativejs" alt="gziped size"></a>
+         <a href="https://npmjs.com/package/dativejs"><img src="https://img.shields.io/bundlephobia/minzip/dativejs" alt="gziped size"></a><br />
+         <a href="https://www.jsdelivr.com/package/npm/dativejs"><img src="https://img.shields.io/jsdelivr/npm/hw/dativejs" alt="jsdelivr"></a>
       </div><br />
       <hr />
       <br />
