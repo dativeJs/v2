@@ -120,7 +120,7 @@ app.render()</code></pre><br />
 <hr>
 <br>
   <h1 class="text-2xl" id="reactive">REACTIVITY</h1><br />
-  <pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+  <pre class="js"><code>import Dative from "dativejs"; // gzip (2.99KB)
 Dative.config.slient = false; // it enables warnings
 
 var app = new Dative({
@@ -158,13 +158,13 @@ app.render()</code></pre><br />
 }</code></pre><br />
 <p>Use the dv-ref directive to reference an element</p><br />
 <h3 class="font-bold text-3xl">dv-html</h3><br />
-<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+<pre class="js"><code>import Dative from "dativejs"; // gzip (2.99KB)
 Dative.config.slient = false; // it enables warnings
 
 var app = new Dative({
   el: "#app",
   data: ()=>({
-    html_content: "&lt;h2>Hello World &lt;/div>"
+    html_content: "&lt;h2>Hello World &lt;/h2>"
   }),
   template: function(){
     return `
@@ -175,7 +175,7 @@ var app = new Dative({
 app.render()</code></pre><br />
 <p>Use the dv-html directive to insert content from the data to innerHTML of an element</p><br />
 <h3 class="font-bold text-3xl">dv-text</h3><br />
-<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+<pre class="js"><code>import Dative from "dativejs"; // gzip (2.99KB)
 Dative.config.slient = false; // it enables warnings
 
 var app = new Dative({
@@ -192,7 +192,7 @@ var app = new Dative({
 app.render()</code></pre><br />
 <p>Use the dv-text directive to insert content from the data to textContent of an element</p><br />
 <h3 class="font-bold text-3xl">dv-show</h3><br />
-<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+<pre class="js"><code>import Dative from "dativejs"; // gzip (2.99KB)
 Dative.config.slient = false; // it enables warnings
 
 var app = new Dative({
@@ -211,7 +211,7 @@ var app = new Dative({
 app.render()</code></pre><br />
 <p>Use the dv-show directive to toggle the element's display CSS property based on the truthy-ness of the given expression value</p><br />
 <h3 class="font-bold text-3xl">dv-if</h3><br />
-<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+<pre class="js"><code>import Dative from "dativejs"; // gzip (2.99KB)
 Dative.config.slient = false; // it enables warnings
 
 var app = new Dative({
@@ -230,7 +230,7 @@ var app = new Dative({
 app.render()</code></pre><br />
 <p>Use the dv-if directive to conditionally render the template based on the truthy-ness of the given expression value</p><br />
 <h3 class="font-bold text-3xl">:style</h3><br />
-<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+<pre class="js"><code>import Dative from "dativejs"; // gzip (2.99KB)
 Dative.config.slient = false; // it enables warnings
 
 var app = new Dative({
@@ -253,7 +253,7 @@ var app = new Dative({
 app.render()</code></pre><br />
 <p>Use the :style directive to pass an object or an array  to dynamically update styles. You can use either camelCase or kebab-case (use quotes with kebab-case) for the CSS property names</p><br />
 <h3 class="font-bold text-3xl">:class</h3><br />
-<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+<pre class="js"><code>import Dative from "dativejs"; // gzip (2.99KB)
 Dative.config.slient = false; // it enables warnings
 
 var app = new Dative({
@@ -274,7 +274,7 @@ var app = new Dative({
 app.render()</code></pre><br />
 <p>Use the :class directive to pass an object or an array to dynamically update classes</p><br />
 <h3 class="font-bold text-3xl">:&lt;attribute></h3><br />
-<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+<pre class="js"><code>import Dative from "dativejs"; // gzip (2.99KB)
 Dative.config.slient = false; // it enables warnings
 
 var app = new Dative({
@@ -293,7 +293,7 @@ var app = new Dative({
 app.render()</code></pre><br />
 <p>Use the :&lt;attribute> directive to dynamically render contents from data to the element</p><br />
 <h3 class="font-bold text-3xl">bind:&lt;attribute></h3><br />
-<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+<pre class="js"><code>import Dative from "dativejs"; // gzip (2.99KB)
 Dative.config.slient = false; // it enables warnings
 
 var app = new Dative({
@@ -315,7 +315,7 @@ app.render()</code></pre><br />
 <br />
 <h2 class="text-2xl font-bold" id="create-your-own-custom-directive">Create Your own Custom Directives</h2><br />
 <h4 class="text-xl">Without Binds</h4><br />
-<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+<pre class="js"><code>import Dative from "dativejs"; // gzip (2.99KB)
 Dative.config.slient = false; // it enables warnings
 
 var app = new Dative({
@@ -336,7 +336,7 @@ var app = new Dative({
 })
 app.render()</code></pre><br />
 <h4 class="text-xl">With Binds</h4><br />
-<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+<pre class="js"><code>import Dative from "dativejs"; // gzip (2.99KB)
 Dative.config.slient = false; // it enables warnings
 
 var app = new Dative({
@@ -358,7 +358,7 @@ var app = new Dative({
 })
 app.render()</code></pre><br />
 <h4 class="text-xl">With Binds argument</h4><br />
-<pre class="js"><code>import Dative from "dativejs"; // gzip (10.6KB)
+<pre class="js"><code>import Dative from "dativejs"; // gzip (2.99KB)
 Dative.config.slient = false; // it enables warnings
 
 var app = new Dative({
@@ -397,7 +397,7 @@ app.render()</code></pre><br />
 <br>
  <h2 class="text-2xl font-bold" id="state-management">STATE MANAGEMENT</h2><br />
  <p>It is often overlooked that the source of truth in Dative applications is the raw data object - a Dative instance only proxies access to it. Therefore, if you have a piece of state that should be shared by multiple instances, you can share it by identity:</p><br />
-<pre class="js"><code>import Dative,{ reactive } from "dativejs"; // gzip (10.6KB)
+<pre class="js"><code>import Dative,{ reactive } from "dativejs"; // gzip (2.99KB)
 Dative.config.slient = false; // it enables warnings
 
 var SourceofTruth = reactive({
