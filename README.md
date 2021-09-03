@@ -5,7 +5,7 @@
 
 ![Version](https://img.shields.io/github/v/release/dativeJs/dativejs)
 ![gzip](https://img.shields.io/bundlephobia/minzip/dativejs)
-![Downloads](https://img.shields.io/npm/dw/dativejs?style=plastic)
+![Downloads](https://img.shields.io/npm/dt/dativejs?style=plastic)
 
 ### Installation
 ### Download
