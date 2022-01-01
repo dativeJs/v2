@@ -211,17 +211,36 @@ var app = new Dative({
 app.render()</code></pre><br />
         </div>
       </div>
-      <!--<div class="mx-12 text-black py-5">
-        <h2 class="text-2xl font-bold">Who's using DativeJs</h2><br />
-         <div class="space-x-4 relative">
-           <div class="border-4 rounded shadow-xl">
-          <a href="https://konnectfree.com.ng">
-           <img class="mx-5 relative z-30 inline object-cover w-12 h-12" src="public/konnectfree.png" />
-           <h3 class="text-gray-800 mx-5 font-bold absolute top-5 left-20">konnectfree</h3>
-          </a>
-           </div>
-         </div>
-      </div>-->
+      <!-- Messenger Chat Plugin Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Chat Plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "135899951985960");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v12.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
     <div class="mx-12 text-black py-5">
       <h2 class="text-2xl font-bold">Contributors</h2><br />
       <p class="text-gray-600 text-xl">Dative is free and open source software, made possible by the work of volunteers. <a href="https://github.com/dativeJs/dativejs" class="log underline">Join Us</a></p><br />
